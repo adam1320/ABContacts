@@ -4,10 +4,15 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+
+
+
 
 namespace ABContacts
 {
@@ -23,6 +28,15 @@ namespace ABContacts
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IDbConnection>((s) =>
+            {
+                IDbConnection conn = new MySqlConnection(Configuration.GetConnectionString("Contacts"));
+                conn.Open();
+                return conn;
+            });
+
+            services.AddTransient<IContactRepository, ContactRepository>();
+
             services.AddControllersWithViews();
         }
 

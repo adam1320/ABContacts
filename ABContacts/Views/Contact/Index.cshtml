@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Contact>
+
+<h2>Contacts</h2>
+
+<div style="display: block">
+    <a href="/Contact/InsertContact/">Create a New Contact</a>
+</div>
+
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Zip Code</th>
+        <th>Contact Type</th>
+    </tr>
+    
+    @foreach (var contact in Model)
+    {
+     <tr>
+                   
+         <td><a href=/Contact/ViewContact/@contact.PersonID>@contact.PersonID</a></td>
+         <td>@contact.FName</td>
+         <td>@contact.LName</td>
+         <td>@contact.Phone</td>
+         <td>@contact.Email</td>
+         <td>@contact.Address</td>
+         <td>@contact.City</td>
+         <td>@contact.State</td>
+         <td>@contact.Zip</td>
+         <td>@contact.ContactType</td>
+     </tr>
+        
+    }
+</table>
