@@ -12,6 +12,7 @@ namespace ABContacts
         public void UpdateContact(Contact contact);
         public void InsertContact(Contact contact);
         public void DeleteContact(Contact contact);
+        public IEnumerable<Contact> GetSearchResults(string search);
     }
 
     

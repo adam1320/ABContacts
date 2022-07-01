@@ -38,9 +38,18 @@
 
     <input type="text" step="0.01" name="Zip" class="form-control" value="@Model.Zip" />
 
-    <label asp-for="ContactType" class="control-label">Contact Type</label>
-
-    <input type="text" step="0.01" name="ContactType" class="form-control" value="@Model.ContactType" />
+    <div class="form-group">
+        <label for="">Select a Contact Type</label>
+        <select class="form-control" name="ContactType" value="">
+        
+            <option value = "Other" selected>Other</option>
+            <option value = "Family">Family</option>
+            <option value = "Friend">Friend</option>
+            <option value = "Business">Business</option>
+            <option value = "Me">Me</option>
+            <option value = ""></option>
+         </select>
+    </div>
 
     <input type="submit" value="Update Contact" class="btn btn-primary" />
 

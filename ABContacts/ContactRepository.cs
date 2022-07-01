@@ -36,15 +36,24 @@ namespace ABContacts
             //dapper.contrib.extensions
             //return _conn.Get<Contact>(ID);
 
-            return _conn.QuerySingle<Contact>("SELECT * FROM PEOPLE WHERE PersonID = @id",
-                new { id = id });
+            return _conn.QuerySingle<Contact>("SELECT * FROM PEOPLE WHERE PersonID = @id;",
+               new { id = id });
+
+        }
+
+        public IEnumerable<Contact> GetSearchResults(string search)
+        {
+            return _conn.Query<Contact>("SELECT * FROM PEOPLE WHERE FName like '%" + @search + "%' or LName like '%" + @search + "%' or Phone like '%" + @search + "%' or Email like '%" + @search + "%' or Address like '%" + @search + "%' or City like '%" + @search + "%' or State like '%" + @search + "%' or Zip like '%" + @search + "%' or ContactType like '%" + @search +"%' ;") ;
+
+
+
 
         }
 
         public void InsertContact(Contact contact)
         {
             _conn.Execute("INSERT INTO people (FName, LName, Phone, Email, Address, City, State, Zip, ContactType) VALUES (@FirstName, @LastName, @Phone, @Email, @Address, @City, @State, @Zip, @ContactType);",
-               new { FirstName = contact.FName, lastname = contact.LName, phone = contact.Phone, email = contact.Email, address = contact.Address, city = contact.City, state = contact.State, zip = contact.Zip, contacttype = contact.ContactType, id = contact.PersonID });
+               new { firstName = contact.FName, lastname = contact.LName, phone = contact.Phone, email = contact.Email, address = contact.Address, city = contact.City, state = contact.State, zip = contact.Zip, contacttype = contact.ContactType, id = contact.PersonID });
 
         }
 
@@ -58,5 +67,9 @@ namespace ABContacts
                new { FirstName = contact.FName, lastname = contact.LName, phone = contact.Phone, email = contact.Email, address = contact.Address, city = contact.City, state = contact.State, zip = contact.Zip, contacttype = contact.ContactType, id = contact.PersonID });
 
         }
+        
+        
+
+
     }
 }
