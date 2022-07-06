@@ -3,16 +3,16 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    @* <title>@ViewData["Title"] - ABContacts</title *@
+   
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-light border-bottom box-shadow mb-3">
             <div class="container">
-                @*<a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ABContacts Home</a>*@
+               
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -21,16 +21,16 @@
                     <ul class="main-nav navbar-nav flex-grow-1">
                         
                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">ABContacts</a>
+                            <a class="nav-link text-black" asp-area="" asp-controller="Home" asp-action="Index">ABContacts</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Contact" asp-action="Index">Contacts</a>
+                            <a class="nav-link text-black" asp-area="" asp-controller="Contact" asp-action="Index">Contacts</a>
                         </li>
                         <li class="nav-item">
                              
                            <form action="/Contact/GetSearchResults">
                                 <div class="input-group">                  
-                                    <input type="text" placeholder="Search All" name="search"/> 
+                                    <input class ="search-bar" type="text" placeholder="Search All" name="search"/> 
                                     
                                     <div class="input-group-append">
                                         <button type="submit">Go</button> 
@@ -39,10 +39,10 @@
                             </form>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="About">About</a>
+                            <a class="nav-link text-black" asp-area="" asp-controller="Home" asp-action="About">About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-black" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                         
                         
@@ -51,14 +51,14 @@
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div id="center-main" class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
+    <footer class=" footer bg-light border-top">
+        <div class="container  bg-light center-div "  >
             &copy; 2022 - ABContacts - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>

@@ -53,7 +53,7 @@ namespace ABContacts.Controllers
 
         public IActionResult InsertContact()
         {
-            // var contact = repo.GetAllContacts();
+            
             return View();
         }
         public IActionResult InsertContactToDatabase(Contact contact)
@@ -73,13 +73,11 @@ namespace ABContacts.Controllers
         public IActionResult GetSearchResults(String search)
         {
             var contacts = repo.GetSearchResults(search);
-            if (contacts == null)
-            {
-                return View("ContactNotFound");
-            }
+           
             
 
-            return View(contacts);
+
+                return View(contacts);
 
         }
     }

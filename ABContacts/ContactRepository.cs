@@ -17,8 +17,7 @@ namespace ABContacts
 
         public void DeleteContact(Contact contact)
         {
-            //dapper.contrib.extensions
-           // _conn.Delete(contact);
+            
             _conn.Execute("DELETE FROM people WHERE PersonID = @id;",
                                      new { id = contact.PersonID });
 
@@ -27,14 +26,12 @@ namespace ABContacts
         public IEnumerable<Contact> GetAllContacts()
         {
             return _conn.Query<Contact>("Select * from people;");
-            //dapper.contrib.extensions
-            //return _conn.GetAll<Contact>();
+            
         }
 
         public Contact GetContact(int id)
         {
-            //dapper.contrib.extensions
-            //return _conn.Get<Contact>(ID);
+            
 
             return _conn.QuerySingle<Contact>("SELECT * FROM PEOPLE WHERE PersonID = @id;",
                new { id = id });
@@ -59,10 +56,7 @@ namespace ABContacts
 
         public void UpdateContact(Contact contact)
         {
-            //Dapper.contrib.extensions
-             //_conn.Update(contact);
-
-           //without dapper.contrib
+            
            _conn.Execute("UPDATE people SET FName = @FirstName, LName = @lastname, Phone = @phone, Email = @email, Address = @address, City = @city, State = @state, Zip = @zip, ContactType = @contacttype WHERE PersonID = @id",
                new { FirstName = contact.FName, lastname = contact.LName, phone = contact.Phone, email = contact.Email, address = contact.Address, city = contact.City, state = contact.State, zip = contact.Zip, contacttype = contact.ContactType, id = contact.PersonID });
 
